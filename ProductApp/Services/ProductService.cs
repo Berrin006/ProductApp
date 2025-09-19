@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ProductApp.Models;
+using System;
 using System.Collections.Generic;
 
-namespace ProductApp
+namespace ProductApp.Services
 {
     public class ProductService
     {
-        public List<Product> Products { get; private set; } = new List<Product>();
+        public List<Product> Products { get; private set; } = [];
 
         public void AddProduct(string name, decimal price)
         {
@@ -21,7 +22,7 @@ namespace ProductApp
                 return;
             }
 
-            Console.WriteLine("Produkter:");
+            Console.WriteLine("Produkter: ");
             foreach (var product in Products)
             {
                 Console.WriteLine($"ID: {product.Id}, Namn: {product.Name}, Pris: {product.Price} kr");

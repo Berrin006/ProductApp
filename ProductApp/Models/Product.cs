@@ -1,18 +1,11 @@
 ﻿using System;
 
-namespace ProductApp
+namespace ProductApp.Models
 {
-    public class Product
+    public class Product(string name, decimal price)
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-
-        public Product(string name, decimal price)
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-            Price = price;
-        }
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public string Name { get; set; } = name;
+        public decimal Price { get; set; } = price;
     }
 }

@@ -1,18 +1,14 @@
-﻿using System;
+﻿using ProductApp.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace ProductApp
+namespace ProductApp.Services
 {
-    public class FileService
+    public class FileService(string filePath)
     {
-        private readonly string _filePath;
-
-        public FileService(string filePath)
-        {
-            _filePath = filePath;
-        }
+        private readonly string _filePath = filePath;
 
         public void SaveProducts(List<Product> products)
         {
@@ -26,13 +22,13 @@ namespace ProductApp
             if (!File.Exists(_filePath))
             {
                 Console.WriteLine("Filen finns inte.");
-                return new List<Product>();
+                return [];
             }
 
             var json = File.ReadAllText(_filePath);
             var productsFromFile = JsonSerializer.Deserialize<List<Product>>(json);
             Console.WriteLine($"Lade till {productsFromFile?.Count ?? 0} produkter från filen.");
-            return productsFromFile ?? new List<Product>();
+            return productsFromFile ?? [];
         }
     }
 }
